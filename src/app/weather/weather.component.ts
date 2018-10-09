@@ -7,7 +7,6 @@ import {WeatherService} from '../service/weather.service';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-
   constructor(private weatherService: WeatherService) {
   }
 
@@ -21,5 +20,8 @@ export class WeatherComponent implements OnInit {
         console.log('Current weather : ', data);
       });
   }
+}
 
+interface weather {
+  name: string;
 }
