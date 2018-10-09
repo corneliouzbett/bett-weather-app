@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WeatherService} from '../service/weather.service';
+import {ForecastService} from '../service/forecast.service';
 
 @Component({
   selector: 'app-weather',
@@ -7,21 +8,34 @@ import {WeatherService} from '../service/weather.service';
   styleUrls: ['./weather.component.css']
 })
 export class WeatherComponent implements OnInit {
-  constructor(private weatherService: WeatherService) {
+
+  public currentweather: any;
+
+  constructor(private weatherService: WeatherService,
+              private forecastService: ForecastService) {
   }
 
   ngOnInit() {
     this.getCurrentWeatherOfaCity('Eldoret');
+    this.getForecastforTheFiveDays('Eldoret');
   }
 
   getCurrentWeatherOfaCity(cityName: string) {
     this.weatherService.getCurrentWeatherOfaCity(cityName)
       .subscribe((data) => {
         console.log('Current weather : ', data);
+        this.currentweather = data;
       });
+  }
+
+  getForecastforTheFiveDays(cityName: string) {
+    this.forecastService.getForecastForFiveDays(cityName)
+      .subscribe((forecast) => {
+          console.log('Weather Forecast: ', forecast);
+        }, error1 => {
+          console.log('ERROR OCCURRED: ', error1);
+        }
+      );
   }
 }
 
-interface weather {
-  name: string;
-}
