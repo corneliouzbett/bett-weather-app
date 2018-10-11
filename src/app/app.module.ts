@@ -5,17 +5,33 @@ import {AppComponent} from './app.component';
 import {WeatherComponent} from './weather/weather.component';
 import {WeatherService} from './service/weather.service';
 import {HttpClientModule} from '@angular/common/http';
+import {LocationService} from './service/location.service';
+import {ForecastService} from './service/forecast.service';
+import {SearchComponent} from './search/search.component';
+import {FooterComponent} from './footer/footer.component';
+import {HeaderComponent} from './header/header.component';
+import {AppRoutingModule} from './app-routing.module';
+import {RouterModule} from '@angular/router';
+import {DefaultcityComponent} from './defaultcity/defaultcity.component';
+import {Error404Component} from './error404/error404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WeatherComponent
+    WeatherComponent,
+    SearchComponent,
+    FooterComponent,
+    HeaderComponent,
+    DefaultcityComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule,
+    AppRoutingModule
   ],
-  providers: [WeatherService],
+  providers: [WeatherService, LocationService, ForecastService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
