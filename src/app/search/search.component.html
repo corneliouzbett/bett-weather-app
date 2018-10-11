@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+        <form >
+          <input type="text" #searchField formControlName="search" class="form-control" placeholder="Search for current weather of a city..">
+        </form>
+    </div>
+    <div class="col-2">
+        <span class="input-group-btn">
+        <button class="btn bg-success text-white" type="button" (click)="getSearchTerm(searchField.value)">search</button>
+      </span>
+    </div>
+  </div>
+</div>
+

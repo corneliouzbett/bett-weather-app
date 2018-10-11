@@ -1,0 +1,84 @@
+<div class="container">
+  <!-- Portfolio Item Row -->
+  <div class="row">
+    <div class="col-md-4">
+      <h1 class="my-4">{{cityName}},
+        <small>{{country}}</small></h1>
+      <img class="img-fluid" src={{icon}} alt="" width="100px" height="100px">
+    </div>
+    <div class="col-md-4">
+      <h3 class="my-3">Current weather Details</h3>
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Temperature
+          <span class="badge badge-primary badge-pill">{{temperature}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Humidity
+          <span class="badge badge-primary badge-pill">{{humidity}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Pressure
+          <span class="badge badge-primary badge-pill">{{pressure}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Speed
+          <span class="badge badge-primary badge-pill">{{speed}}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Description
+          <span class="badge badge-primary badge-pill">{{description}}</span>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h3 class="my-3">Recommendations</h3>
+      <p>Below is a recommendation on what to carry or wear based on the current weather</p>
+      <div [ngSwitch] ="description">
+        <div class="list-group" *ngSwitchCase="'smoke'">
+          <a class="list-group-item list-group-item-action">You should wear jacket and equiped yourself with gumboots</a>
+          <a  class="list-group-item list-group-item-action ">Ideal for a cup of coffee with friends</a>
+          <a  class="list-group-item list-group-item-action ">Carry umbrella might rain</a>
+        </div>
+        <div class="list-group" *ngSwitchCase="'light rain'">
+          <a class="list-group-item list-group-item-action">You should wear jacket and equiped yourself with gumboots</a>
+          <a  class="list-group-item list-group-item-action ">Ideal for a cup of coffee with friends</a>
+          <a  class="list-group-item list-group-item-action ">Carry umbrella might rain</a>
+        </div>
+        <div class="list-group" *ngSwitchCase="'broken clouds'">
+          <a class="list-group-item list-group-item-action">You should wear jacket and equiped yourself with gumboots</a>
+          <a  class="list-group-item list-group-item-action ">Carry umbrella might rain</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.row -->
+  <!-- weather forecast Row -->
+  <h2 class="my-3"> Weather Forecast for the next five days </h2>
+  <hr class="my-2">
+  <div class="row">
+    <div class="col-md-3 col-sm-6 mb-4" *ngFor="let data of forecast_sorted_data">
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+        <div class="card-header">{{data['0'].date}}</div>
+        <div class="card-body">
+          <img src="{{data['0'].icon}}">
+          <p class="card-text">{{data['0'].description}}</p>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Temperature<span class="badge badge-primary badge-pill">{{data['0'].temp}}</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Humidity<span class="badge badge-primary badge-pill">{{data['0'].humidity}}</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Pressure<span class="badge badge-primary badge-pill">{{data['0'].pressure}}</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Speed<span class="badge badge-primary badge-pill">{{data['0'].speed}}</span></li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">Wind
+              <span class="badge badge-primary badge-pill">{{data['0'].wind}}</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+</div>
