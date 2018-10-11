@@ -9,9 +9,10 @@ export class LocationService {
 
   private BASEURL = 'https://raw.githubusercontent.com/lutangar/cities.json/master/cities.json';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  getLocations(): Observable<any>{
+  getLocations(): Observable<any> {
     return this.httpClient.get(this.BASEURL);
   }
 

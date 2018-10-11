@@ -24,12 +24,14 @@ export class DefaultcityComponent implements OnInit {
   speed = '';
 
   constructor(private weatherServcie: WeatherService,
-              private forecastService: ForecastService) { }
+              private forecastService: ForecastService) {
+  }
 
   ngOnInit() {
     this.getCurrentWeatherOfaCity('Eldoret');
-    this.getForecastforTheFiveDays('Eldoret')
+    this.getForecastforTheFiveDays('Eldoret');
   }
+
   getCurrentWeatherOfaCity(cityName: string) {
     this.weatherServcie.getCurrentWeatherOfaCity(cityName)
       .subscribe((data) => {
@@ -53,27 +55,27 @@ export class DefaultcityComponent implements OnInit {
     this.forecastService.getForecastForFiveDays(cityName)
       .subscribe((forecast) => {
           this.forecastData = [];
-          forecast.list.forEach((data)=>{
+        forecast.list.forEach((data) => {
             let localData = {};
-            localData['temp']= data['main'].temp;
-            localData['pressure']= data['main'].pressure;
-            localData['wind']= data['wind'].deg;
-            localData['humidity']= data['main'].humidity;
-            localData['icon']= `http://openweathermap.org/img/w/${data['weather']['0'].icon}.png`;
-            localData['description']= data['weather']['0'].description;
-            localData['date']= data['dt_txt'];
-            localData['speed']= data['wind'].speed;
+          localData['temp'] = data['main'].temp;
+          localData['pressure'] = data['main'].pressure;
+          localData['wind'] = data['wind'].deg;
+          localData['humidity'] = data['main'].humidity;
+          localData['icon'] = `http://openweathermap.org/img/w/${data['weather']['0'].icon}.png`;
+          localData['description'] = data['weather']['0'].description;
+          localData['date'] = data['dt_txt'];
+          localData['speed'] = data['wind'].speed;
             this.forecastData.push(localData);
           });
           console.log('my array', this.forecastData);
           console.log('Weather Forecast: ', forecast);
           this.forecast_sorted_data = [];
-          this.forecast_sorted_data.push(this.forecastData.slice(4,5));
-          this.forecast_sorted_data.push(this.forecastData.slice(12,13));
-          this.forecast_sorted_data.push(this.forecastData.slice(20,21));
-          this.forecast_sorted_data.push(this.forecastData.slice(28,29));
-          this.forecast_sorted_data.push(this.forecastData.slice(36,37));
-          console.log("Data sorted: ",this.forecast_sorted_data);
+        this.forecast_sorted_data.push(this.forecastData.slice(4, 5));
+        this.forecast_sorted_data.push(this.forecastData.slice(12, 13));
+        this.forecast_sorted_data.push(this.forecastData.slice(20, 21));
+        this.forecast_sorted_data.push(this.forecastData.slice(28, 29));
+        this.forecast_sorted_data.push(this.forecastData.slice(36, 37));
+        console.log('Data sorted: ', this.forecast_sorted_data);
         }, error1 => {
           console.log('ERROR OCCURRED: ', error1);
         }

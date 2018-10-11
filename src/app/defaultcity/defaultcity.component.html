@@ -3,7 +3,8 @@
   <div class="row">
     <div class="col-md-4">
       <h1 class="my-4">{{cityName}},
-        <small>{{country}}</small></h1>
+        <small>{{country}}</small>
+      </h1>
       <img class="img-fluid" src={{icon}} alt="" width="100px" height="100px">
     </div>
     <div class="col-md-4">
@@ -34,20 +35,23 @@
     <div class="col-md-4">
       <h3 class="my-3">Recommendations</h3>
       <p>Below is a recommendation on what to carry or wear based on the current weather</p>
-      <div [ngSwitch] ="description">
+      <div [ngSwitch]="description">
         <div class="list-group" *ngSwitchCase="'smoke'">
-          <a class="list-group-item list-group-item-action">You should wear jacket and equiped yourself with gumboots</a>
-          <a  class="list-group-item list-group-item-action ">Ideal for a cup of coffee with friends</a>
-          <a  class="list-group-item list-group-item-action ">Carry umbrella might rain</a>
+          <a class="list-group-item list-group-item-action">You should wear jacket and equiped yourself with
+            gumboots</a>
+          <a class="list-group-item list-group-item-action ">Ideal for a cup of coffee with friends</a>
+          <a class="list-group-item list-group-item-action ">Carry umbrella might rain</a>
         </div>
         <div class="list-group" *ngSwitchCase="'light rain'">
-          <a class="list-group-item list-group-item-action">You should wear jacket and equiped yourself with gumboots</a>
-          <a  class="list-group-item list-group-item-action ">Ideal for a cup of coffee with friends</a>
-          <a  class="list-group-item list-group-item-action ">Carry umbrella might rain</a>
+          <a class="list-group-item list-group-item-action">You should wear jacket and equiped yourself with
+            gumboots</a>
+          <a class="list-group-item list-group-item-action ">Ideal for a cup of coffee with friends</a>
+          <a class="list-group-item list-group-item-action ">Carry umbrella might rain</a>
         </div>
         <div class="list-group" *ngSwitchCase="'broken clouds'">
-          <a class="list-group-item list-group-item-action">You should wear jacket and equiped yourself with gumboots</a>
-          <a  class="list-group-item list-group-item-action ">Carry umbrella might rain</a>
+          <a class="list-group-item list-group-item-action">You should wear jacket and equiped yourself with
+            gumboots</a>
+          <a class="list-group-item list-group-item-action ">Carry umbrella might rain</a>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LocationService} from '../service/location.service';
 import {Router} from '@angular/router';
 
@@ -9,12 +9,14 @@ import {Router} from '@angular/router';
 })
 export class SearchComponent implements OnInit {
   constructor(private locationService: LocationService,
-              private route: Router) { }
+              private route: Router) {
+  }
 
   ngOnInit() {
 
   }
-  getSearchTerm(value): void{
+
+  getSearchTerm(value): void {
     this.route.navigate(['/weather', value]);
     console.log(value);
   }
