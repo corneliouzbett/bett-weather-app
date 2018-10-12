@@ -14,7 +14,6 @@ export class ForecastService {
   }
 
   getForecastForFiveDays(cityName: string): Observable<any> {
-    let buildUrl = `${this.BASEURL}/forecast?q=${cityName}&APPID=${this.APP_ID}`;
-    return this.httpClient.get(buildUrl);
+    return this.httpClient.get(`${this.BASEURL}/forecast?q=${cityName}&APPID=${this.APP_ID}`);
   }
 }
