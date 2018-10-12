@@ -1,5 +1,6 @@
 <div class="container">
-  <!-- Portfolio Item Row -->
+
+  <!--current weather details-->
   <div class="row">
     <div class="col-md-4">
       <h1 class="my-4">{{cityName}},
@@ -81,16 +82,15 @@
         </div>
       </div>
     </div>
-
   </div>
-  <!-- /.row -->
-  <!-- weather forecast Row -->
+
+  <!--weather forecast for the next 5 days-->
   <h2 class="my-3"> Weather Forecast for the next five days </h2>
   <hr class="my-2">
   <div class="row">
     <div class="col-md-3 col-sm-6 mb-4" *ngFor="let data of forecast_sorted_data">
       <div class="card border-primary mb-3" style="max-width: 20rem;">
-        <div class="card-header">{{data['0'].date}}</div>
+        <div class="card-header">{{data['0'].date | date:"MM/dd/yy"}}</div>
         <div class="card-body">
           <img src="{{data['0'].icon}}">
           <p class="card-text">{{data['0'].description}}</p>
@@ -110,7 +110,8 @@
       </div>
     </div>
   </div>
-  <!-- /.row -->
+
+  <!--track your moods and activities-->
   <div class="jumbotron">
     <p class="lead">Start tracking your activities and moods daily. </p>
     <hr class="my-4">

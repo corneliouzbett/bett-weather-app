@@ -31,6 +31,7 @@ export class WeatherComponent implements OnInit {
               private locationService: LocationService,
               private route: ActivatedRoute,
               private nav: Router) {
+    this.subscription = new Subscription();
   }
 
   ngOnInit() {
