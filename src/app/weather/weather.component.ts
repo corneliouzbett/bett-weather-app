@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {WeatherService} from '../service/weather.service';
 import {ForecastService} from '../service/forecast.service';
-import {LocationService} from '../service/location.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 
@@ -25,10 +24,10 @@ export class WeatherComponent implements OnInit {
   degree = '';
   speed = '';
   subscription: Subscription;
+  @Input('eldoret') param_cityname: string;
 
   constructor(private weatherService: WeatherService,
               private forecastService: ForecastService,
-              private locationService: LocationService,
               private route: ActivatedRoute,
               private nav: Router) {
     this.subscription = new Subscription();
@@ -108,6 +107,8 @@ export class WeatherComponent implements OnInit {
   * */
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    console.log('Subscription :', 'unsubscribed successful');
   }
+
 }
 

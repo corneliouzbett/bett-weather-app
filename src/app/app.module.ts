@@ -12,7 +12,6 @@ import {FooterComponent} from './footer/footer.component';
 import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
-import {DefaultcityComponent} from './defaultcity/defaultcity.component';
 import {Error404Component} from './error404/error404.component';
 
 @NgModule({
@@ -22,7 +21,6 @@ import {Error404Component} from './error404/error404.component';
     SearchComponent,
     FooterComponent,
     HeaderComponent,
-    DefaultcityComponent,
     Error404Component
   ],
   imports: [
