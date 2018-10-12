@@ -36,13 +36,16 @@ export class WeatherComponent implements OnInit {
 
   ngOnInit() {
     this.subscription.add(this.route.paramMap.subscribe((params) => {
-      let city = params.get('cityname');
-      console.log('cityname', city);
-      this.getCurrentWeatherOfaCity(city);
-      this.getForecastforTheFiveDays(city);
+      console.log('cityname', params.get('cityname'));
+      this.getCurrentWeatherOfaCity(params.get('cityname'));
+      this.getForecastforTheFiveDays(params.get('cityname'));
     }));
   }
 
+  /* takes city name as parameter
+  * returns current weather of the city
+  * @get current weather of a city
+  * */
   getCurrentWeatherOfaCity(cityName: string) {
     this.subscription.add(this.weatherService.getCurrentWeatherOfaCity(cityName)
       .subscribe((data) => {
@@ -65,6 +68,10 @@ export class WeatherComponent implements OnInit {
       }));
   }
 
+  /*
+  * params (city name)
+  * returns weather forecast for the next five days
+  * */
   getForecastforTheFiveDays(cityName: string) {
     this.subscription.add(this.forecastService.getForecastForFiveDays(cityName)
       .subscribe((forecast) => {
@@ -96,6 +103,9 @@ export class WeatherComponent implements OnInit {
       ));
   }
 
+  /*
+  * on destroy it unsubscribe from all subscription
+  * */
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
