@@ -14,7 +14,10 @@ export class Error404Component implements OnInit {
   ngOnInit() {
   }
 
+  /*
+  * navigates back to home
+  * default view */
   gobackHome(): void {
-    this.route.navigate(['/default']);
+    this.route.navigate(['/']);
   }
 }
