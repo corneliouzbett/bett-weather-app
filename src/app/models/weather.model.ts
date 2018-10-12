@@ -1,5 +1,5 @@
 export class WeatherModel {
-  coord: coordinate;
+  coord: Coordinate;
   weather: Weather;
   base: string;
   main: main;
@@ -13,7 +13,7 @@ export class WeatherModel {
   cod: number;
 }
 
-export class coordinate {
+export class Coordinate {
   lon: any;
   lat: any;
 }

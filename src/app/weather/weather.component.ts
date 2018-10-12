@@ -110,5 +110,12 @@ export class WeatherComponent implements OnInit {
     console.log('Subscription :', 'unsubscribed successful');
   }
 
+  /*
+  * Navigates to track component
+  * */
+  startingTrackingMoodsandActivities(): void {
+    this.nav.navigate(['track']);
+  }
+
 }
 

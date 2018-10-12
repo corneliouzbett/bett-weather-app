@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import {Error404Component} from './error404/error404.component';
 import {TrackComponent} from './track/track.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import {TrackComponent} from './track/track.component';
     BrowserModule,
     HttpClientModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     WeatherComponent,
