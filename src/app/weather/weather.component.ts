@@ -3,6 +3,7 @@ import {WeatherService} from '../service/weather.service';
 import {ForecastService} from '../service/forecast.service';
 import {LocationService} from '../service/location.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-weather',
@@ -23,6 +24,7 @@ export class WeatherComponent implements OnInit {
   icon = '';
   degree = '';
   speed = '';
+  subscription: Subscription;
 
   constructor(private weatherService: WeatherService,
               private forecastService: ForecastService,
@@ -32,16 +34,16 @@ export class WeatherComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
+    this.subscription.add(this.route.paramMap.subscribe((params) => {
       let city = params.get('cityname');
       console.log('cityname', city);
       this.getCurrentWeatherOfaCity(city);
       this.getForecastforTheFiveDays(city);
-    });
+    }));
   }
 
   getCurrentWeatherOfaCity(cityName: string) {
-    this.weatherService.getCurrentWeatherOfaCity(cityName)
+    this.subscription.add(this.weatherService.getCurrentWeatherOfaCity(cityName)
       .subscribe((data) => {
         const results = data;
         console.log('Current weather : ', results);
@@ -59,11 +61,11 @@ export class WeatherComponent implements OnInit {
       }, error1 => {
         console.log('ERROR OCCURRED :', error1);
         this.nav.navigate(['/error']);
-      });
+      }));
   }
 
   getForecastforTheFiveDays(cityName: string) {
-    this.forecastService.getForecastForFiveDays(cityName)
+    this.subscription.add(this.forecastService.getForecastForFiveDays(cityName)
       .subscribe((forecast) => {
         this.forecastData = [];
         forecast.list.forEach((data) => {
@@ -90,14 +92,11 @@ export class WeatherComponent implements OnInit {
         }, error1 => {
           console.log('ERROR OCCURRED: ', error1);
         }
-      );
+      ));
   }
 
-  getLocations() {
-    this.locationService.getLocations()
-      .subscribe((locs) => {
-        console.log('Locations', locs);
-      });
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
 

@@ -14,14 +14,6 @@ export class WeatherService {
   }
 
   getCurrentWeatherOfaCity(cityName: String): Observable<any> {
-    let build_url = `${this.BASEURL}/weather?q=${cityName}&APPID=${this.APP_ID}`;
-    return this.http.get(build_url);
-  }
-
-  private handleError(error: any) {
-    let errMsg: string;
-    errMsg = error.message ? error.message : error.toString();
-    console.error(errMsg);
-    return Observable.throw(errMsg);
+    return this.http.get(`${this.BASEURL}/weather?q=${cityName}&APPID=${this.APP_ID}`);
   }
 }
