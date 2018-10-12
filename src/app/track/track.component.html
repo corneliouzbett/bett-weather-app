@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="jumbotron bg-white">
+    <h3> Tracking Your Moods and Activities</h3>
+    <div class="row">
+      <br/>
+      <div class="col-md-6">
+        <div class="form-group">
+          <br/>
+          <form [formGroup]="track">
+            <label>Enter your mood</label>
+            <input class="form-control" [formControl]="moods" placeholder="Enter your moods today" type="text">
+            <small id="emailHelp" class="form-text text-muted">it can be sad,</small>
+            <label>What are you doing today ?</label>
+            <textarea class="form-control" placeholder="activity" [formControl]="activities" rows="2"></textarea>
+            <br/>
+            <button type="submit" style="position: center" class="btn btn-primary" (click)="addActivity()">add
+              activity
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h4> Your activities today</h4>
+        <ul *ngFor="let act of activities_data">
+          <li>{{act.activity}}</li>
+        </ul>
+      </div>
+      <a class="btn btn-primary text-white btn-lg" (click)="generateJsonPayload()" role="button">Submit</a>
+    </div>
+  </div>
+</div>
