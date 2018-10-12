@@ -13,6 +13,10 @@ export class ForecastService {
   constructor(private httpClient: HttpClient) {
   }
 
+  /*
+  * takes city name as parameter
+  * returns weather forecast for the next 5 days as an observable of type any
+  * */
   getForecastForFiveDays(cityName: string): Observable<any> {
     return this.httpClient.get(`${this.BASEURL}/forecast?q=${cityName}&APPID=${this.APP_ID}`);
   }
