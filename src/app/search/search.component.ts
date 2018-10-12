@@ -16,8 +16,11 @@ export class SearchComponent implements OnInit {
 
   }
 
+  /*
+  * params => value from the search box
+  * navigate to the next component /weather
+  * passes value to the url*/
   getSearchTerm(value): void {
     this.route.navigate(['/weather', value]);
-    console.log(value);
   }
 }
