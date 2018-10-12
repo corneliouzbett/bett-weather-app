@@ -13,6 +13,7 @@ import {HeaderComponent} from './header/header.component';
 import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import {Error404Component} from './error404/error404.component';
+import {TrackComponent} from './track/track.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +22,22 @@ import {Error404Component} from './error404/error404.component';
     SearchComponent,
     FooterComponent,
     HeaderComponent,
-    Error404Component
+    Error404Component,
+    TrackComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule,
     AppRoutingModule
+  ],
+  exports: [
+    WeatherComponent,
+    SearchComponent,
+    FooterComponent,
+    HeaderComponent,
+    Error404Component,
+    TrackComponent
   ],
   providers: [WeatherService, LocationService, ForecastService],
   bootstrap: [AppComponent]
