@@ -1,12 +1,20 @@
-// import {TestBed} from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-// import {LocationService} from './location.service';
+import {
+    HttpClientTestingModule,
+    HttpTestingController
+  } from '@angular/common/http/testing';
 
-// describe('LocationService', () => {
-//   beforeEach(() => TestBed.configureTestingModule({}));
+import {LocationService} from './location.service';
 
-//   it('should be created', () => {
-//     const service: LocationService = TestBed.get(LocationService);
-//     expect(service).toBeTruthy();
-//   });
-// });
+describe('LocationService', () => {
+  beforeEach(() => TestBed.configureTestingModule({
+    imports: [HttpClientTestingModule],
+    providers: [LocationService]
+  }));
+
+  it('should be created', () => {
+    const service: LocationService = TestBed.get(LocationService);
+    expect(service).toBeTruthy();
+  });
+});
