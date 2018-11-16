@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ForecastService {
 
   constructor(private httpClient: HttpClient) {
   }
-
+  
   /*
   * takes city name as parameter
   * returns weather forecast for the next 5 days as an observable of type any
